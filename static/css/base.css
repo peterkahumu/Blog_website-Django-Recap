@@ -9,15 +9,35 @@ body {
 }
 
 header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 1.5rem;
 }
 
-header h1 a {
+header a {
+    color: #8bf302;
+}
+
+header a:visited {
+    color: #8bf302;
+}
+
+.nav-left {
+    margin-left: 20px
+}
+
+.nav-right {
+    margin-right: 0;
+}
+
+a {
     color: #3b82f6;
     text-decoration: none;
 }
 
-header h1 a:visited {
+a:visited {
     color: #3b82f6;
 }
 
@@ -26,15 +46,6 @@ header h1 a:visited {
     font-size: 2rem;
     text-transform: capitalize;
     margin: 0.5rem 0.6rem;
-}
-
-.post-title a {
-    text-decoration: none;
-}
-
-.post-title a:visited {
-    color: #3b82f6;
-    text-decoration: none;
 }
 
 .post-author,
