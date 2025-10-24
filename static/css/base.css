@@ -16,14 +16,6 @@ header {
     font-size: 1.5rem;
 }
 
-header a {
-    color: #8bf302;
-}
-
-header a:visited {
-    color: #8bf302;
-}
-
 .nav-left {
     margin-left: 20px
 }
@@ -39,6 +31,14 @@ a {
 
 a:visited {
     color: #3b82f6;
+}
+
+a.action {
+    color: #8bf302;
+}
+
+a.action:visited {
+    color: #8bf302;
 }
 
 .post-title {

@@ -42,7 +42,7 @@ class PostTest(TestCase):
         self.assertEqual(self.post_invalid.status_code, 404)
 
         # test the absolute url
-        self.assertEqual(self.post.get_absolute_url(), f'/blog/{self.post.id}/')
+        self.assertEqual(self.post.get_absolute_url(), f"/blog/{self.post.id}/")
 
     def test_templates(self):
         """Test templates to ensure expected behaviour."""
@@ -54,20 +54,20 @@ class PostTest(TestCase):
         self.assertContains(self.home_url, "Test Post")
         self.assertContains(self.home_name, "This is the second test data.")
         self.assertContains(self.post_url, "This is a test Post.")
-    
+
     def test_post_model(self):
         """Test model to ensure it is working as expected."""
         self.assertEqual(self.post.title, "Test Post")
         self.assertEqual(self.post.author.username, "testuser")
         self.assertEqual(self.post.body, "This is a test Post.")
         self.assertEqual(str(self.post), "Test Post")
-    
+
     def test_home_queryset(self):
         """Test the queryset has a predefined number of response items."""
         response = Post.objects.all()
-        self.assertEqual(response.count(), 2) # exactly two objects.
-    
+        self.assertEqual(response.count(), 2)  # exactly two objects.
+
     def test_context_data(self):
         """Test that the context is as expected."""
-        self.assertIn('posts', self.home_name.context)
-        self.assertIn('post', self.post_url.context)
+        self.assertIn("posts", self.home_name.context)
+        self.assertIn("post", self.post_url.context)

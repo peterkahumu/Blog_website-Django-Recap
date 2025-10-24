@@ -5,15 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock title %} | Django Blogs</title>
+    <title>{% block title %} {% endblock title %}</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
 <body>
     <header>
-        <a class="nav-left" href="{% url 'home' %}">Django Blogs</a>
-        <a class="nav-right" href="{% url 'new-post' %}">+ Add new Post</a>
+        <a class="nav-left action" href="{% url 'home' %}">Django Blogs</a>
+        <a class="nav-right action" href="{% url 'new-post' %}">+ Add new Post</a>
     </header>
 
     <div>
