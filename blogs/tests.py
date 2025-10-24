@@ -12,6 +12,7 @@ class PostTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
+        """Create test data."""
         cls.user = get_user_model().objects.create_user(
             username="testuser", email="testuser@test.com", password="test123"
         )
@@ -24,6 +25,7 @@ class PostTest(TestCase):
         )
 
     def setUp(self):
+        """Prepare test clients for home and post endpoints."""
         self.home_url = self.client.get("/")
         self.home_name = self.client.get(reverse("home"))
 
@@ -67,5 +69,5 @@ class PostTest(TestCase):
     
     def test_context_data(self):
         """Test that the context is as expected."""
-        self.assertIn('post_list', self.home_name.context)
+        self.assertIn('posts', self.home_name.context)
         self.assertIn('post', self.post_url.context)

@@ -1,20 +1,17 @@
-from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 from .models import Post
 
 
 # Create your views here.
-class PostList(ListView):
+class PostListView(ListView):
+    """List all the posts in the database."""
     model = Post
     template_name = "posts/home.html"
+    context_object_name = "posts"
 
-
-class PostDetail(DetailView):
+class PostDetailView(DetailView):
+    """List a specific post using the primary key."""
     model = Post
     template_name = "posts/post_detail.html"
 
-
-# def post_detail(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     return render(request, 'posts/post_detail.html', {'post': post})
