@@ -25,7 +25,7 @@ class TestPostModel(TestCase):
 
     def setUp(self):
         """Prepare client GET responses used across tests."""
-        self.home_url = self.client.get("/") # literal url used intetionally here.
+        self.home_url = self.client.get("/")  # literal url used intetionally here.
         self.home_name = self.client.get(reverse("home"))
 
         self.post_url = self.client.get(self.post.get_absolute_url())
@@ -81,7 +81,7 @@ class TestPostModel(TestCase):
 
         self.assertEqual(response.status_code, 302)
 
-        created = Post.objects.first() # ordering should be handled at DB level.
+        created = Post.objects.first()  # ordering should be handled at DB level.
         self.assertIsNotNone(created)
         self.assertEqual(created.title, "New Post")
         self.assertEqual(created.body, "New body")
@@ -119,7 +119,5 @@ class TestPostModel(TestCase):
 
     def test_delete_non_existent_post(self):
         """Deleting a non-existent post returns 404."""
-        response = self.client.post(
-            reverse("delete-post", kwargs={"pk": uuid.uuid4()})
-        )
+        response = self.client.post(reverse("delete-post", kwargs={"pk": uuid.uuid4()}))
         self.assertEqual(response.status_code, 404)
