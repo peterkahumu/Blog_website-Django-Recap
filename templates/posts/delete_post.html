@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Confirm delete — {{ object.title }}{% endblock title %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/delete.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<section class="del-wrap">
+    <div class="card">
+        <header class="card-head">
+            <h1>Delete post</h1>
+            <p class="muted">You are about to permanently delete:</p>
+            <p class="post-title">{{ object.title }}</p>
+            <p class="muted small">By {{ object.author }} • {{ object.created_at|date:"M j, Y H:i" }}</p>
+        </header>
+
+        <div class="card-body">
+            <p class="warn">
+                This action <strong>can’t</strong> be undone. All comments and related data will be removed.
+            </p>
+
+            <form method="post" class="del-form">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes — delete post</button>
+                <a href="{% url 'post-detail' object.pk %}" class="btn btn-cancel">Cancel</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}

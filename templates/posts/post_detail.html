@@ -7,6 +7,7 @@
 <h2 class="post-author">Author: {{post.author}}</h2>
 <p class="post-body">{{post.body}}</p>
 
-<a class="action" href="{{post.get_update_url}}">+ Update Post</a>
+<a class="action" href="{{post.get_update_url}}">+ Update Post</a><br>
+<a style="color: red; font-size: 1.5rem;" href="{% url 'delete-post' post.id %}">X Delete Post</a>
 
 {% endblock content %}
