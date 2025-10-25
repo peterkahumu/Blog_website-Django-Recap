@@ -17,6 +17,13 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @property
+    def snippet(self):
+        """Return the first five words of the post body (adds ellipsis if longer)."""
+        words = self.body.split()
+        snippet = ' '.join(words[:5])+"..."
+        return snippet
+        
     class Meta:
         ordering = ["-created_at"]
 

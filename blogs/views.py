@@ -8,7 +8,6 @@ from .models import Post
 # Create your views here.
 class PostListView(ListView):
     """List all the posts in the database."""
-
     model = Post
     template_name = "posts/home.html"
     context_object_name = "posts"
@@ -17,24 +16,26 @@ class PostListView(ListView):
 
 class PostDetailView(DetailView):
     """List a specific post using the primary key."""
-
     model = Post
     template_name = "posts/post_detail.html"
 
 
 class NewPostView(CreateView):
+    """Create a new post"""
     model = Post
     template_name = "posts/create_post.html"
     fields = ["title", "author", "body"]
 
 
 class UpdatePostView(UpdateView):
+    """Update an existing blog"""
     model = Post
     template_name = "posts/edit_post.html"
     fields = ["title", "body"]
 
 
 class DeletePostView(DeleteView):
+    """Delete an existing blog."""
     model = Post
     template_name = "posts/delete_post.html"
     success_url = reverse_lazy("home")
