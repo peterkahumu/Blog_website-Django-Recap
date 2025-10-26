@@ -13,9 +13,29 @@
 
 <body>
     <header>
-        <a class="nav-left action" href="{% url 'home' %}">Home</a>
-        <a class="nav-right action" href="{% url 'new-post' %}">+ Add new Post</a>
+        <div class="nav-left">
+            <a class="action" href="{% url 'home' %}">Home</a>
+        </div>
+
+        <div class="nav-right">
+            <a class="action" href="{% url 'new-post' %}">+ Add new Post</a>
+            {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="Log out">
+            </form>
+            {% endif %}
+        </div>
     </header>
+
+    <div class="is-authenticated">
+        {% if user.is_authenticated %}
+        <p>Hi {{user.username}} !</p>
+        {% else %}
+        <p>You are not logged in. Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">create
+                an account</a></p>
+        {% endif %}
+    </div>
 
     <div>
         {% block content %}

@@ -21,9 +21,9 @@ class Post(models.Model):
     def snippet(self):
         """Return the first five words of the post body (adds ellipsis if longer)."""
         words = self.body.split()
-        snippet = ' '.join(words[:5])+"..."
+        snippet = " ".join(words[:5]) + "..."
         return snippet
-        
+
     class Meta:
         ordering = ["-created_at"]
 
